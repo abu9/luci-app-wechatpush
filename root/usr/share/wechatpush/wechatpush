@@ -1118,7 +1118,7 @@ ${str_title_start}$(translate "Router Rebooted")${str_title_end}"
 ${str_splitline}\
 ${str_title_start}$(translate "IP Address Changed")${str_title_end}"
 		content="${content}\
-${str_linefeed}${str_tab} - $(translate "Current IP:")  ${IPv4}"
+${str_linefeed}${str_tab} - $(translate "Current IP:") ${last_IPv4} >> ${IPv4}"
 		jq --arg IPv4 "$IPv4" '.address[0].IPv4 = $IPv4' "$devices_json" >"$tmp_devices_json" && mv "$tmp_devices_json" "$devices_json"
 	fi
 	
@@ -1129,7 +1129,7 @@ ${str_linefeed}${str_tab} - $(translate "Current IP:")  ${IPv4}"
 ${str_splitline}\
 ${str_title_start}$(translate "IPv6 Address Changed")${str_title_end}"
 		content="${content}\
-${str_linefeed}${str_tab} - $(translate "Current IPv6:") ${IPv6}"
+${str_linefeed}${str_tab} - $(translate "Current IPv6:") ${last_IPv6} >> ${IPv6}"
 		jq --arg IPv6 "$IPv6" '.address[0].IPv6 = $IPv6' "$devices_json" >"$tmp_devices_json" && mv "$tmp_devices_json" "$devices_json"
 	fi
 
